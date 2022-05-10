@@ -9,10 +9,15 @@ let humanScore = 0;
 
 function playRound(playerSelection, computerSelection) {
   computerSelection = computerPlay();
-  playerSelection = prompt(
-    "Enter either rock, paper or scissors"
-  ).toLowerCase();
-
+  do {
+    playerSelection = prompt(
+      "Choose between rock, paper or scissors"
+    ).toLowerCase();
+  } while (
+    !playerSelection === "rock" &&
+    !playerSelection === "paper" &&
+    !playerSelection === "scissors"
+  );
   if (playerSelection === computerSelection) {
     return `It's a Tie! you both chose ${playerSelection}`;
   } else if (playerSelection === "rock" && computerSelection === "paper") {
