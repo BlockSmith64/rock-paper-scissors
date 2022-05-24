@@ -13,19 +13,14 @@ body {
   flex-direction: column;
 }
 
-img {
-  width: 100px;
-}
-.buttons img:active {
-  width: 110px;
+.choices {
+  justify-content: center;
 }
 
-.img-human {
-  width: 200px;
-  padding: 50px;
-}
+.img-human,
 .img-bot {
   width: 200px;
+  height: 200px;
   padding: 50px;
 }
 
@@ -44,8 +39,8 @@ img {
 }
 
 .final-result {
-  padding-bottom: 40px;
   font-size: 25px;
+  justify-content: center;
 }
 
 .choices {
@@ -54,11 +49,35 @@ img {
   gap: 15px;
 }
 
+.rock:hover,
+.paper:hover,
+.scissors:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px 1px;
+  cursor: pointer;
+}
+
 .result {
   display: flex;
+  gap: 40px;
   flex-direction: column;
+  justify-content: center;
 }
 
 .hidden {
   display: none;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #e0fcff;
+  font-size: 20px;
+}
+
+.button img {
+  width: 120px;
 }
