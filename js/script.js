@@ -10,8 +10,8 @@ const computerPlay = function () {
 
 const body = document.querySelector("body");
 const score = document.querySelector(".score");
-const result = document.querySelector(".result");
-score.textContent = `Score: huamans (${humanScore}:${botScore}) bots`;
+const finalResult = document.querySelector(".final-result");
+score.textContent = `${humanScore} - ${botScore}`;
 
 let gameOn = true;
 const gameStatus = function () {
@@ -21,12 +21,12 @@ const gameStatus = function () {
   // }
 
   if (humanScore === 5) {
-    result.textContent = "Humans Win the game!";
-    body.style.cssText = "background-color: green;";
+    finalResult.textContent = "Humans Win the game!";
+    body.style.cssText = "background-color: #66E31E;";
     return (gameOn = false);
   } else if (botScore === 5) {
-    result.textContent = "Bots Win the game!";
-    body.style.cssText = "background-color: red;";
+    finalResult.textContent = "Bots Win the game!";
+    body.style.cssText = "background-color: #F21E0C;";
     return (gameOn = false);
   }
 };
@@ -34,7 +34,9 @@ const gameStatus = function () {
 const playRound = function (playerSelection, computerSelection) {
   if (gameOn) {
     if (playerSelection === computerSelection) {
-      score.textContent = `Score: huamans (${humanScore}:${botScore}) bots`;
+      btnRock.src = "./images/rock-human.png";
+      score.textContent = `${humanScore} - ${botScore}`;
+      imgBot.src = `./images/bot-${computerSelection}.jpg`;
       return "draw";
     } else if (
       (playerSelection === "rock" && computerSelection === "paper") ||
@@ -42,7 +44,8 @@ const playRound = function (playerSelection, computerSelection) {
       (playerSelection === "scissors" && computerSelection === "rock")
     ) {
       ++botScore;
-      score.textContent = `Score: huamans (${humanScore}:${botScore}) bots`;
+      score.textContent = `${humanScore} - ${botScore}`;
+      imgBot.src = `./images/bot-${computerSelection}.jpg`;
       return "bots";
     } else if (
       (playerSelection === "rock" && computerSelection === "scissors") ||
@@ -50,15 +53,19 @@ const playRound = function (playerSelection, computerSelection) {
       (playerSelection === "scisors" && computerSelection === "paper")
     ) {
       ++humanScore;
-      score.textContent = `Score: huamans (${humanScore}:${botScore}) bots`;
+      score.textContent = `${humanScore} - ${botScore}`;
+      imgBot.src = `./images/bot-${computerSelection}.jpg`;
       return "humans";
     }
   }
 };
 
-const btnRock = document.querySelector(".btn-rock");
-const btnPaper = document.querySelector(".btn-paper");
-const btnScissors = document.querySelector(".btn-scissors");
+const btnRock = document.querySelector(".rock");
+const btnPaper = document.querySelector(".paper");
+const btnScissors = document.querySelector(".scissors");
+const gameScreen = document.querySelector(".game-screen");
+const imgHuman = document.querySelector(".img-human");
+const imgBot = document.querySelector(".img-bot");
 
 const gameHandler = function (playerSelection) {
   const computerSelection = computerPlay();
@@ -67,26 +74,28 @@ const gameHandler = function (playerSelection) {
 };
 
 btnRock.addEventListener("click", function () {
-  console.log("hello");
+  if (gameOn) imgHuman.src = "./images/rock-human.png";
   gameHandler("rock");
 });
 btnPaper.addEventListener("click", function () {
+  if (gameOn) imgHuman.src = "./images/paper-human.webp";
   gameHandler("paper");
 });
 btnScissors.addEventListener("click", function () {
+  if (gameOn) imgHuman.src = "./images/scissors-human.png";
   gameHandler("scissors");
 });
 
-const btnNewGame = document.createElement("button");
-btnNewGame.textContent = "New Game";
+// const btnNewGame = document.createElement("button");
+// btnNewGame.textContent = "New Game";
 
-body.appendChild(btnNewGame);
+// document.querySelector(".container").appendChild(btnNewGame);
 
-btnNewGame.addEventListener("click", function () {
-  gameOn = true;
-  botScore = 0;
-  humanScore = 0;
-  score.textContent = `Score: huamans (${humanScore}:${botScore}) bots`;
-  result.textContent = "";
-  body.style.cssText = "background-color: white;";
-});
+// btnNewGame.addEventListener("click", function () {
+//   gameOn = true;
+//   botScore = 0;
+//   humanScore = 0;
+//   score.textContent = `Score: huamans (${humanScore}:${botScore}) bots`;
+//   finalResult.textContent = "";
+//   body.style.cssText = "background-color: white;";
+// });
