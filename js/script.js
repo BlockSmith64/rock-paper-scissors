@@ -15,7 +15,11 @@ score.textContent = `${humanScore} - ${botScore}`;
 
 let gameOn = true;
 
-const gameOver = function () {};
+const gameOver = function () {
+  btnRock.classList.remove("effects");
+  btnPaper.classList.remove("effects");
+  btnScissors.classList.remove("effects");
+};
 
 const gameStatus = function () {
   if (humanScore === 5) {
