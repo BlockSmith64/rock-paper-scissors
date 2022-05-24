@@ -41,7 +41,7 @@ const playRound = function (playerSelection, computerSelection) {
       btnRock.src = "./images/rock-human.png";
       score.textContent = `${humanScore} - ${botScore}`;
       imgBot.src = `./images/bot-${computerSelection}.jpg`;
-      finalResult.textContent = "It's a draw!";
+      finalResult.textContent = `It's a draw! you both chose ${playerSelection}`;
       return "draw";
     } else if (
       (playerSelection === "rock" && computerSelection === "paper") ||
@@ -51,7 +51,7 @@ const playRound = function (playerSelection, computerSelection) {
       ++botScore;
       score.textContent = `${humanScore} - ${botScore}`;
       imgBot.src = `./images/bot-${computerSelection}.jpg`;
-      finalResult.textContent = "You Lose!";
+      finalResult.textContent = `You Lose! ${playerSelection} loses to ${computerSelection}`;
       return "bots";
     } else if (
       (playerSelection === "rock" && computerSelection === "scissors") ||
@@ -60,7 +60,7 @@ const playRound = function (playerSelection, computerSelection) {
     ) {
       ++humanScore;
       score.textContent = `${humanScore} - ${botScore}`;
-      finalResult.textContent = "You Win!";
+      finalResult.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;
       imgBot.src = `./images/bot-${computerSelection}.jpg`;
       return "humans";
     }
