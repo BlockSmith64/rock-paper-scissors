@@ -46,6 +46,7 @@ button {
 .final-result {
   font-size: 25px;
   justify-content: center;
+  align-items: center;
 }
 
 .play-btns {
@@ -61,11 +62,12 @@ button:hover {
   cursor: pointer;
 }
 
-.result {
+.content {
   display: flex;
   gap: 40px;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .hidden {
