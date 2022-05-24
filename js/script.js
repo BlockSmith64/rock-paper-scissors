@@ -14,17 +14,17 @@ const finalResult = document.querySelector(".final-result");
 score.textContent = `${humanScore} - ${botScore}`;
 
 let gameOn = true;
-const gameStatus = function () {
-  // for (let i = 0; i < 5; i++) {
-  //   console.log(playRound());
-  //   console.log(`Score: huamans (${humanScore}:${botScore}) bots`);
-  // }
 
+const gameOver = function () {};
+
+const gameStatus = function () {
   if (humanScore === 5) {
+    gameOver();
     finalResult.textContent = "Humans Win the game!";
     body.style.cssText = "background-color: #66E31E;";
     return (gameOn = false);
   } else if (botScore === 5) {
+    gameOver();
     finalResult.textContent = "Bots Win the game!";
     body.style.cssText = "background-color: #F21E0C;";
     return (gameOn = false);
@@ -89,16 +89,18 @@ btnScissors.addEventListener("click", function () {
   gameHandler("scissors");
 });
 
-// const btnNewGame = document.createElement("button");
-// btnNewGame.textContent = "New Game";
+const btnNewGame = document.querySelector(".new-game-btn");
 
-// document.querySelector(".container").appendChild(btnNewGame);
-
-// btnNewGame.addEventListener("click", function () {
-//   gameOn = true;
-//   botScore = 0;
-//   humanScore = 0;
-//   score.textContent = `Score: huamans (${humanScore}:${botScore}) bots`;
-//   finalResult.textContent = "";
-//   body.style.cssText = "background-color: white;";
-// });
+btnNewGame.addEventListener("click", function () {
+  gameOn = true;
+  botScore = 0;
+  humanScore = 0;
+  score.textContent = `${humanScore} - ${botScore}`;
+  finalResult.textContent = "Pick your choice";
+  imgHuman.src = "./images/q-mark-green.webp";
+  imgBot.src = "./images/q-mark-blue.png";
+  body.style.cssText = "background-color: #0c6155;";
+  btnRock.classList.add("effects");
+  btnPaper.classList.add("effects");
+  btnScissors.classList.add("effects");
+});
